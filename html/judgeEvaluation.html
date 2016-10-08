@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../css/judgeEvaluation.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="icon" type="image/png" href="../resources/favicon.png">
+  <title>Evaluation</title>
+</head>
+
+<body>
+  <nav class="red darken-4" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">
+          <img src="../resources/sculogo.png" alt="SCU Logo" id="sculogo">
+      </a>
+      <ul class="right">
+        <li><a href="../index.html">Logout</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="../index.html">Logout</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <div class="center">
+        <h4>Senior Design Evaluation</h4>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-content center">
+              <span class="card-title">Evaluation Criteria</span>
+              <h6>
+                <strong>Please evaluate design projects and presentations using the following point system:</strong>
+              </h6>
+              <div class="card-action">
+                <div>
+                  <p>
+                    5 = Excellent (at the level of an entry-level engineer you would hire)
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    4 = Good (at the level of an accomplished college senior)
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    3 = Average (at the level of a typical college senior)
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    2 = Below Average (not up to the expectations of a college senior)
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    1 = Poor (significant errors or omissions)
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    N/A = If no appropriate score applies
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-content center">
+          <h5>Session Information</h5>
+          <div class="col sm 12">
+            <div class="row">
+              <div class="input-field col s6">
+                <select>
+                  <option value="" disabled selected>Select a Department</option>
+                  <option value="bio">Bioengineering</option>
+                  <option value="civil">Civil Engineering</option>
+                  <option value="coen">Computer Engineering</option>
+                  <option value="elen">Electrical Engineering</option>
+                  <option value="mech">Mechanical Engineering</option>
+                  <option value="interdiciplinary">Interdiciplinary</option>
+                </select>
+                <label>Department</label>
+              </div>
+
+              <div class="input-field col s6">
+                <select>
+                  <option value="" disabled selected>Select a Session</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                </select>
+                <label>Session</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <h5>Project Information</h5>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="projectTitle" type="text" class="validate">
+                  <label for="projectTitle">Project Title</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="nameAdvisor" type="text" class="validate">
+                  <label for="nameAdvisor">Advisor Name</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="first_name1" type="text" class="validate">
+                  <label for="first_name1">Member 1 First Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name1" type="text" class="validate">
+                  <label for="last_name1">Member 1 Last Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="first_name2" type="text" class="validate">
+                  <label for="first_name2">Member 2 First Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name2" type="text" class="validate">
+                  <label for="last_name2">Member 2 Last Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="first_name3" type="text" class="validate">
+                  <label for="first_name3">Member 3 First Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name3" type="text" class="validate">
+                  <label for="last_name3">Member 3 Last Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="first_name4" type="text" class="validate">
+                  <label for="first_name4">Member 4 First Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name4" type="text" class="validate">
+                  <label for="last_name4">Member 4 Last Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="first_name5" type="text" class="validate">
+                  <label for="first_name5">Member 5 First Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name5" type="text" class="validate">
+                  <label for="last_name5">Member 5 Last Name</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+               <h5>Design Project</h5>
+
+              <div class="input-field col s6">
+                <select>
+                  <option value="" disabled selected>Score for Technical Accuracy</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                  <option value="N/A">N/A</option>
+                </select>
+                <label>Technical Accuracy</label>
+              </div>
+              <div class="input-field col s6">
+                <select>
+                  <option value="" disabled selected>Score for Creativity and Innovation</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                  <option value="N/A">N/A</option>
+                </select>
+                <label>Creativity and Innovation</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <select>
+                  <option value="" disabled selected>Score for Supporting Analytical Work</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                  <option value="N/A">N/A</option>
+                </select>
+                <label>Supporting Analytical Work</label>
+              </div>
+              <div class="input-field col s6">
+                <select>
+                  <option value="" disabled selected>Score for Methodical Design Process Demonstrated</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                  <option value="N/A">N/A</option>
+                </select>
+                <label>Methodical Design Process Demonstrated</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <select>
+                  <option value="" disabled selected>Score for Addresses Project Complexity Appropriately</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                  <option value="N/A">N/A</option>
+                </select>
+                <label>Addresses Project Complexity Appropriately</label>
+              </div>
+              <div class="input-field col s6">
+                <select>
+                  <option value="" disabled selected>Score for Expectation of Completion (by term's end)</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                  <option value="N/A">N/A</option>
+                </select>
+                <label>Expectation of Completion (by term's end)</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <select>
+                  <option value="" disabled selected>Score for Design and Analysis of Tests</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                  <option value="N/A">N/A</option>
+                </select>
+                <label>Design and Analysis of Tests</label>
+              </div>
+              <div class="input-field col s6">
+                <select>
+                  <option value="" disabled selected>Score for Quality of Responses during Q&A</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                  <option value="N/A">N/A</option>
+                </select>
+                <label>Quality of Responses during Q&A</label>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <h5>Presentation</h5>
+              <div class="input-field col s6">
+                <select>
+                  <option value="" disabled selected>Score for Organization</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                  <option value="N/A">N/A</option>
+                </select>
+                <label>Organization</label>
+              </div>
+              <div class="input-field col s6">
+                <select>
+                  <option value="" disabled selected>Score for Use of Allotted Time</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                  <option value="N/A">N/A</option>
+                </select>
+                <label>Use of Allotted Time</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <select>
+                  <option value="" disabled selected>Score for Visual Aids</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                  <option value="N/A">N/A</option>
+                </select>
+                <label>Visual Aids</label>
+              </div>
+              <div class="input-field col s6">
+                <select>
+                  <option value="" disabled selected>Score for Confidence and Poise</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                  <option value="N/A">N/A</option>
+                </select>
+                <label>Confidence and Poise</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <h5>Considerations Addressed</h5>
+              <div class="input-field col s12">
+                <select multiple>
+                  <option value="" disabled selected>Select Considerations Addressed</option>
+                  <option value="economic">Economic</option>
+                  <option value="environment">Environment</option>
+                  <option value="ethical">Ethical</option>
+                  <option value="health and safety">Health and Safety</option>
+                  <option value="manufacturability">Manufacturability</option>
+                  <option value="political">Political</option>
+                  <option value="social">Social</option>
+                  <option value="sustainability">Sustainability</option>
+                </select>
+                <label>Considerations Addressed</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <h5>Additional Comments</h5>
+              <div class="input-field col s12">
+                <textarea id="textarea1" class="materialize-textarea" length="500"></textarea>
+                <label for="textarea1">Additional Comments</label>
+              </div>
+            </div>
+
+            <div class="row center">
+              <button class="btn waves-effect red darken-4" type="submit" name="login">Submit
+                  <i class="material-icons right">send</i>
+                </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="page-footer red darken-4">
+      <div class="container">
+      </div>
+      <div class="footer-copyright">
+        <div class="container center">
+        Created by Jimmy Patel, Max Werner, and Ryan Nakagawa.
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!--  Scripts-->
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../js/materialize.js"></script>
+  <script src="../js/judgeEvaluation.js"></script>
+
+  </body>
+</html>

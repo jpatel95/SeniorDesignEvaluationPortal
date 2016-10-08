@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../css/login.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="icon" type="image/png" href="../resources/favicon.png">
+  <title>Login</title>
+</head>
+
+<body>
+  <nav class="red darken-4" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">
+          <img src="../resources/sculogo.png" alt="SCU Logo" id="sculogo">
+      </a>
+      <ul class="right">
+        <li><a href="../index.html">Home</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="../index.html">Home</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <div class="row">
+        <div class="row center" id="loginButtonRow">
+          <div class="col s6">
+            <button class="btn waves-effect red darken-4" onClick="buttonJudgeClick()" id="buttonJudge">Judge</button>
+          </div>
+          <div class="col s6">
+            <button class="btn waves-effect red lighten-3" onClick="buttonAdminClick()" id="buttonAdmin">Admin</button>
+          </div>
+        </div>
+
+        <form action="javascript:login();" class="col s12" id="loginForm">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate" required>
+              <label for="email" data-error="Invalid Data" data-success="right">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="password" type="password" class="validate" required>
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <div class="row center">
+            <button class="btn waves-effect red darken-4" type="submit" name="login">Login
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer red darken-4">
+    <div class="container">
+      
+    </div>
+    <div class="footer-copyright">
+      <div class="container center">
+      Created by Jimmy Patel, Max Werner, and Ryan Nakagawa.
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../js/materialize.js"></script>
+  <script src="../js/login.js"></script>
+
+  </body>
+</html>
