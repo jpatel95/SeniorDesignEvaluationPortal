@@ -7,10 +7,10 @@
 $(document).ready(function() {
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
-		  console.log("Already Signed in");
+			console.log("Already Signed in");
 		} else {
-		  console.log("Not Signed in");
-		  window.location.replace("../index.html");
+			console.log("Not Signed in");
+			window.location.replace("../index.html");
 		}
 	})
 	$('select').material_select();

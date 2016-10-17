@@ -73,33 +73,30 @@ function login(){
 function loginImpl(email, pass){
   if (firebase.auth().currentUser) {
     console.log("You were already signed in so logging out now");
+    console.log(firebase.auth().currentUser.uid);
     firebase.auth().signOut();
   }
 
-  if(isAdminSelected){
-    //Need to figue out admin auth!!!
-
-
-    firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorCode, errorMessage);
-      return;
-    });
-  } else {
-    firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorCode, errorMessage);
-      return;
-    });
-  }
-  
+  firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorCode, errorMessage);
+    alert("Invalid credentials");
+  });
 
   firebase.auth().onAuthStateChanged(user => {
     if(user) {
       if(isAdminSelected){
-        window.location.replace("adminSessions.html");
+        var ref = firebase.database().ref("admins/uid");
+        ref.once("value").then(function(snapshot) {
+          console.log(snapshot.val());
+          if(firebase.auth().currentUser.uid == snapshot.val()){
+            console.log("Matched");
+            window.location.replace("adminSessions.html");
+          } else {
+            alert("Invalid credentials");
+          }
+        });
       } else {
         window.location.replace("judgeEvaluation.html");
       }
