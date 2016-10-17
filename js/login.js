@@ -60,10 +60,55 @@ function buttonAdminClick() {
 
 function login(){
 	console.log("login clicked");
-	if(isAdminSelected){
-		window.location.replace("adminSessions.html");
-	} else {
-		window.location.replace("judgeEvaluation.html");
-	}
+  /*
+  Need to add input sanitization.
+  */
 
+
+  email = document.getElementById("email").value;
+  pass = document.getElementById("password").value;
+  loginImpl(email, pass);
 }
+
+function loginImpl(email, pass){
+  if (firebase.auth().currentUser) {
+    console.log("You were already signed in so logging out now");
+    firebase.auth().signOut();
+  }
+
+  if(isAdminSelected){
+    //Need to figue out admin auth!!!
+
+
+    firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      return;
+    });
+  } else {
+    firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      return;
+    });
+  }
+  
+
+  firebase.auth().onAuthStateChanged(user => {
+    if(user) {
+      if(isAdminSelected){
+        window.location.replace("adminSessions.html");
+      } else {
+        window.location.replace("judgeEvaluation.html");
+      }
+    }
+  });
+}
+
+
+
+
+
+

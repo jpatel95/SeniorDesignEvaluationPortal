@@ -20,13 +20,13 @@
       <ul class="right">
         <li><a href="#">Teams</a></li>
         <li><a href="adminSessions.html">Sessions</a></li>
-        <li><a href="../index.html">Logout</a></li>
+        <li><a onclick="logout()" >Logout</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
         <li><a href="#">Teams</a></li>
         <li><a href="adminSessions.html">Sessions</a></li>
-        <li><a href="../index.html">Logout</a></li>
+        <li><a onclick="logout()" >Logout</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
@@ -98,7 +98,18 @@
 
 
   <!--  Scripts-->
-
+  <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDB-Htzx4h_OrYU2Ye5f3BpQ2H36o3MHMQ",
+      authDomain: "senior-design-evaluation.firebaseapp.com",
+      databaseURL: "https://senior-design-evaluation.firebaseio.com",
+      storageBucket: "",
+      messagingSenderId: "52750955691"
+    };
+    firebase.initializeApp(config);
+  </script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="../js/materialize.js"></script>
   <script src="../js/adminTeams.js"></script>
