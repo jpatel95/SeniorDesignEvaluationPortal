@@ -5,21 +5,16 @@
 })(jQuery);
 
 $(document).ready(function() {
-	firebase.auth().onAuthStateChanged(function(user) {
-		if (user) {
-			console.log("Already Signed in");
-		} else {
-			console.log("Not Signed in");
-			window.location.replace("../index.html");
-		}
-	})
+	var name = localStorage.getItem("name");
+	var code = localStorage.getItem("code");
+	console.log(name, code);
 	$('select').material_select();
+	$("#welcomeHeader").append("Hello " + name.split(" ")[0] + ". Thank you for being with us today.");
 });
 
 function logout(){
-	if (firebase.auth().currentUser) {
-		console.log("Logging out now");
-		firebase.auth().signOut();
-	}
+	console.log("Logging out now");
+	localStorage.removeItem("name");
+	localStorage.removeItem("code");
 	window.location.replace("../index.html");
 }
