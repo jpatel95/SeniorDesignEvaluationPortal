@@ -75,7 +75,7 @@
                 </div>
                 <div>
                   <p>
-                    N/A = If no appropriate score applies
+                    0 = If no appropriate score applies
                   </p>
                 </div>
               </div>
@@ -100,6 +100,32 @@
                   <option value="interdiciplinary">Interdiciplinary</option>
                 </select>
                 <label>Department</label>
+                <!--
+                <p>Department</p>
+                <p>
+                  <input name="department" type="radio" id="department1" value="bio"/>
+                  <label for="department1">Bioengineering</label>
+                </p>
+                <p>
+                  <input name="department" type="radio" id="department2" value="civil"/>
+                  <label for="department2">Civil Engineering</label>
+                </p>
+                <p>
+                  <input name="department" type="radio" id="department3" value="coen"/>
+                  <label for="department3">Computer Engineering</label>
+                </p>
+                <p>
+                  <input name="department" type="radio" id="department4" value="elen"/>
+                  <label for="department4">Electrical Engineering</label>
+                </p>
+                <p>
+                  <input name="department" type="radio" id="department5" value="mech"/>
+                  <label for="department5">Mechanical Engineering</label>
+                </p>
+                <p>
+                  <input name="department" type="radio" id="department6" value="interdiciplinary"/>
+                  <label for="department6">Interdiciplinary</label>
+                </p>-->
               </div>
 
               <div class="input-field col s6">
@@ -188,104 +214,104 @@
                <h5>Design Project</h5>
 
               <div class="input-field col s6">
-                <select>
+                <select id="technical">
                   <option value="" disabled selected>Score for Technical Accuracy</option>
                   <option value="5">5</option>
                   <option value="4">4</option>
                   <option value="3">3</option>
                   <option value="2">2</option>
                   <option value="1">1</option>
-                  <option value="N/A">N/A</option>
+                  <option value="0">0</option>
                 </select>
                 <label>Technical Accuracy</label>
               </div>
               <div class="input-field col s6">
-                <select>
+                <select id="creativity">
                   <option value="" disabled selected>Score for Creativity and Innovation</option>
                   <option value="5">5</option>
                   <option value="4">4</option>
                   <option value="3">3</option>
                   <option value="2">2</option>
                   <option value="1">1</option>
-                  <option value="N/A">N/A</option>
+                  <option value="0">0</option>
                 </select>
                 <label>Creativity and Innovation</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s6">
-                <select>
+                <select id="supporting">
                   <option value="" disabled selected>Score for Supporting Analytical Work</option>
                   <option value="5">5</option>
                   <option value="4">4</option>
                   <option value="3">3</option>
                   <option value="2">2</option>
                   <option value="1">1</option>
-                  <option value="N/A">N/A</option>
+                  <option value="0">0</option>
                 </select>
                 <label>Supporting Analytical Work</label>
               </div>
               <div class="input-field col s6">
-                <select>
+                <select id="methodical">
                   <option value="" disabled selected>Score for Methodical Design Process Demonstrated</option>
                   <option value="5">5</option>
                   <option value="4">4</option>
                   <option value="3">3</option>
                   <option value="2">2</option>
                   <option value="1">1</option>
-                  <option value="N/A">N/A</option>
+                  <option value="0">0</option>
                 </select>
                 <label>Methodical Design Process Demonstrated</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s6">
-                <select>
+                <select id="addresses">
                   <option value="" disabled selected>Score for Addresses Project Complexity Appropriately</option>
                   <option value="5">5</option>
                   <option value="4">4</option>
                   <option value="3">3</option>
                   <option value="2">2</option>
                   <option value="1">1</option>
-                  <option value="N/A">N/A</option>
+                  <option value="0">0</option>
                 </select>
                 <label>Addresses Project Complexity Appropriately</label>
               </div>
               <div class="input-field col s6">
-                <select>
+                <select id="expectation">
                   <option value="" disabled selected>Score for Expectation of Completion (by term's end)</option>
                   <option value="5">5</option>
                   <option value="4">4</option>
                   <option value="3">3</option>
                   <option value="2">2</option>
                   <option value="1">1</option>
-                  <option value="N/A">N/A</option>
+                  <option value="0">0</option>
                 </select>
                 <label>Expectation of Completion (by term's end)</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s6">
-                <select>
+                <select id="design">
                   <option value="" disabled selected>Score for Design and Analysis of Tests</option>
                   <option value="5">5</option>
                   <option value="4">4</option>
                   <option value="3">3</option>
                   <option value="2">2</option>
                   <option value="1">1</option>
-                  <option value="N/A">N/A</option>
+                  <option value="0">0</option>
                 </select>
                 <label>Design and Analysis of Tests</label>
               </div>
               <div class="input-field col s6">
-                <select>
+                <select id="quality">
                   <option value="" disabled selected>Score for Quality of Responses during Q&A</option>
                   <option value="5">5</option>
                   <option value="4">4</option>
                   <option value="3">3</option>
                   <option value="2">2</option>
                   <option value="1">1</option>
-                  <option value="N/A">N/A</option>
+                  <option value="0">0</option>
                 </select>
                 <label>Quality of Responses during Q&A</label>
               </div>
@@ -295,52 +321,52 @@
             <div class="row">
               <h5>Presentation</h5>
               <div class="input-field col s6">
-                <select>
+                <select id="organization">
                   <option value="" disabled selected>Score for Organization</option>
                   <option value="5">5</option>
                   <option value="4">4</option>
                   <option value="3">3</option>
                   <option value="2">2</option>
                   <option value="1">1</option>
-                  <option value="N/A">N/A</option>
+                  <option value="0">0</option>
                 </select>
                 <label>Organization</label>
               </div>
               <div class="input-field col s6">
-                <select>
+                <select id="time">
                   <option value="" disabled selected>Score for Use of Allotted Time</option>
                   <option value="5">5</option>
                   <option value="4">4</option>
                   <option value="3">3</option>
                   <option value="2">2</option>
                   <option value="1">1</option>
-                  <option value="N/A">N/A</option>
+                  <option value="0">0</option>
                 </select>
                 <label>Use of Allotted Time</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s6">
-                <select>
+                <select id="visual">
                   <option value="" disabled selected>Score for Visual Aids</option>
                   <option value="5">5</option>
                   <option value="4">4</option>
                   <option value="3">3</option>
                   <option value="2">2</option>
                   <option value="1">1</option>
-                  <option value="N/A">N/A</option>
+                  <option value="0">0</option>
                 </select>
                 <label>Visual Aids</label>
               </div>
               <div class="input-field col s6">
-                <select>
+                <select id="confidence">
                   <option value="" disabled selected>Score for Confidence and Poise</option>
                   <option value="5">5</option>
                   <option value="4">4</option>
                   <option value="3">3</option>
                   <option value="2">2</option>
                   <option value="1">1</option>
-                  <option value="N/A">N/A</option>
+                  <option value="0">0</option>
                 </select>
                 <label>Confidence and Poise</label>
               </div>
@@ -349,7 +375,7 @@
             <div class="row">
               <h5>Considerations Addressed</h5>
               <div class="input-field col s12">
-                <select multiple>
+                <select multiple id="considerations">
                   <option value="" disabled selected>Select Considerations Addressed</option>
                   <option value="economic">Economic</option>
                   <option value="environment">Environment</option>
@@ -373,7 +399,7 @@
             </div>
 
             <div class="row center">
-              <button class="btn waves-effect red darken-4" type="submit" name="submit">Submit
+              <button class="btn waves-effect red darken-4" id="submit" type="submit" name="submit">Submit
                   <i class="material-icons right">send</i>
                 </button>
             </div>
