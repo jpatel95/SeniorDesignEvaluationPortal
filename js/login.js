@@ -12,18 +12,19 @@ function buttonJudgeClick() {
 		return;
 	}
 	document.getElementById("loginButtonRow").innerHTML = '<div class="col s6"><button class="btn waves-effect red darken-4" onClick="buttonJudgeClick()" id="buttonJudge">Judge</button></div><div class="col s6"><button class="btn waves-effect red lighten-3" onClick="buttonAdminClick()" id="buttonAdmin">Admin</button></div>';
-    document.getElementById("loginForm").innerHTML = '<div class="row">' +
-            '<div class="input-field col s12">' +
-              '<input id="password" type="password" class="validate" required>' +
-              '<label for="password">Code</label>' +
-            '</div>' +
+  document.getElementById("loginForm").innerHTML = '<div class="row">' +
+          '<div class="input-field col s12">' +
+            '<input id="password" type="password" class="validate" required>' +
+            '<label for="password">Code</label>' +
           '</div>' +
-          '<div class="row center">' +
-            '<button class="btn waves-effect red darken-4" type="submit" name="login">Login' +
-              '<i class="material-icons right">send</i>' +
-            '</button>' +
-          '</div>';
-    isAdminSelected = false;
+        '</div>' +
+        '<div class="row center">' +
+          '<button class="btn waves-effect red darken-4" type="submit" name="login">Login' +
+            '<i class="material-icons right">send</i>' +
+          '</button>' +
+        '</div>';
+  document.getElementById("resetPasswordRow").innerHTML = '';
+  isAdminSelected = false;
 };
 
 function buttonAdminClick() {
@@ -49,7 +50,17 @@ function buttonAdminClick() {
               '<i class="material-icons right">send</i>' +
             '</button>' +
           '</div>';
-    isAdminSelected = true;
+
+
+  document.getElementById("resetPasswordRow").innerHTML = '<div class="row center">' +
+          '<a onclick="resetPassword()">'+
+            '<button class="btn waves-effect red darken-4" >Reset' +
+            '<i class="material-icons right">refresh</i>' +
+          '</button>' +
+          '</a>' +
+        '</div>';
+
+  isAdminSelected = true;
 };
 
 function login(){
@@ -125,5 +136,14 @@ function loginJudgeImpl(pass){
   });
 }
 
-
+function resetPassword(){
+  email = document.getElementById("email").value;
+  console.log(email)
+  if(email != null && email!=""){
+    firebase.auth().sendPasswordResetEmail(email);
+    alert("Please check your email to reset the password.");
+  } else {
+    alert("Please enter a valid email address.");
+  }
+}
 
