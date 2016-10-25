@@ -20,9 +20,10 @@ function logout(){
 }
 
 $("#submit").click(function(){
-  //console.log("testing");
 
-  var judgeEvaluation = {
+  var name = localStorage.getItem("name");
+
+  var scores = {
       "Department": $("#department").val(),
       "Session": $("#session").val(),
       "Project Title": $("#projectTitle").val(),
@@ -56,6 +57,29 @@ $("#submit").click(function(){
 
     };
 
-    console.log(judgeEvaluation);
+    //console.log(scores);
 
+    var eval = {
+      "judgename": name,
+      "score": scores
+    };
+    console.log(eval);
+
+    //var ref = firebase.database().ref("teams/judgescores");
+    var ref = firebase.database().ref("teams");
+
+    var result = ref.once("value").then(function(snapshot) {
+      console.log(snapshot.val());
+      var key = snapshot.forEach(function(childSnapshot) {
+          var childData = childSnapshot.val();
+          console.log(key, childData);
+          if($("#projectTitle").val() == childData.Title){
+            console.log("Match Found: " + childSnapshot.key);
+            return childSnapshot.key;
+          }
+      });
+      console.log(key);
+    });
+  	//var result = ref.push(eval);
+    //console.log(result);
 });
