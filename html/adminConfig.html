@@ -39,7 +39,7 @@
       <h4 class="header center red-text text-darken-4">Configuration</h4>
 
       <div class="row center">
-        <div class="col s6">
+        <div class="col s4">
           <div class="card ">
             <div class="card-content">
               <span class="card-title">Add a Judge</span>
@@ -50,7 +50,18 @@
             </div>
           </div>
         </div>
-        <div class="col s6">
+        <div class="col s4">
+          <div class="card ">
+            <div class="card-content">
+              <span class="card-title">Forgotten Code</span>
+              <p> Click on the link below to get a forgotten judge code.</p>
+            </div>
+            <div class="card-action">
+              <a class="modal-trigger" href="#modalGetJudgeCode">Get Judge Code</a>
+            </div>
+          </div>
+        </div>
+        <div class="col s4">
           <div class="card ">
             <div class="card-content">
               <span class="card-title">Remove a Judge</span>
@@ -63,76 +74,102 @@
         </div>
       </div>
 
-      <div class="row center">
-        <div class="col s6">
-          <div class="card ">
-            <div class="card-content">
-              <span class="card-title">Add a Team</span>
-              <p> Click on the link below to add a Senior Design Team.</p>
-            </div>
-            <div class="card-action">
-              <a class="modal-trigger" href="#modalAddTeam">Add a Team</a>
-            </div>
-          </div>
-        </div>
-        <div class="col s6">
-          <div class="card ">
-            <div class="card-content">
-              <span class="card-title">Remove a Team</span>
-              <p> Click on the link below to remove a Senior Design Team.</p>
-            </div>
-            <div class="card-action">
-              <a class="modal-trigger" href="#modalRemoveTeam">Remove a Team</a>
-            </div>
-          </div>
-        </div>
-      </div>
+
+
+
 
       <!-- Modal Structure -->
       <div id="modalAddJudge" class="modal">
-        <div class="modal-content">
-          <h4>Modal Header</h4>
-          <p>A bunch of text</p>
+        <div class="modal-content center">
+          <h4>Adding a Judge</h4>
+            <div id="addJudgeForm">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="firstNameAdd" type="text" class="validate">
+                    <label for="firstNameAdd">First Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="lastNameAdd" type="text" class="validate">
+                    <label for="lastNameAdd">Last Name</label>
+                  </div>
+                </div>
+                <div class="row center">
+                  <button class="btn waves-effect red darken-4" type="submit" id="addJudge">Add
+                    <i class="material-icons right">send</i>
+                  </button>
+                </div>
+              </form>
+            </div>
         </div>
-        <div class="modal-footer">
-          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        <div class="modal-footer center">
+          <a href="#!" class="modal-action modal-close waves-effect right">
+            <button class="btn waves-effect red darken-4">Close</button>
+          </a>
         </div>
       </div>
 
       <!-- Modal Structure -->
       <div id="modalRemoveJudge" class="modal">
-        <div class="modal-content">
-          <h4>Modal Header</h4>
-          <p>A bunch of text</p>
+        <div class="modal-content center">
+          <h4>Removing a Judge</h4>
+            <div id="removeJudgeForm">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="firstNameRemove" type="text" class="validate">
+                    <label for="firstNameRemove">First Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="lastNameRemove" type="text" class="validate">
+                    <label for="lastNameRemove">Last Name</label>
+                  </div>
+                </div>
+                <div class="row center">
+                  <button class="btn waves-effect red darken-4" type="submit" id="removeJudge">Remove
+                    <i class="material-icons right">send</i>
+                  </button>
+                </div>
+              </form>
+            </div>
         </div>
-        <div class="modal-footer">
-          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        <div class="modal-footer center">
+          <a href="#!" class="modal-action modal-close waves-effect right">
+            <button class="btn waves-effect red darken-4">Close</button>
+          </a>
         </div>
       </div>
-
 
       <!-- Modal Structure -->
-      <div id="modalAddTeam" class="modal">
-        <div class="modal-content">
-          <h4>Modal Header</h4>
-          <p>A bunch of text</p>
+      <div id="modalGetJudgeCode" class="modal">
+        <div class="modal-content center">
+          <h4>Forgotten Code</h4>
+            <div id="forgotJudgeForm">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="firstNameForgot" type="text" class="validate">
+                    <label for="firstNameForgot">First Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="lastNameForgot" type="text" class="validate">
+                    <label for="lastNameForgot">Last Name</label>
+                  </div>
+                </div>
+                <div class="row center">
+                  <button class="btn waves-effect red darken-4" type="submit" id="forgotCode">Get Code
+                    <i class="material-icons right">send</i>
+                  </button>
+                </div>
+              </form>
+            </div>
         </div>
         <div class="modal-footer">
-          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+          <a href="#!" class="modal-action modal-close waves-effect right">
+            <button class="btn waves-effect red darken-4">Close</button>
+          </a>
         </div>
       </div>
-
-      <!-- Modal Structure -->
-      <div id="modalRemoveTeam" class="modal">
-        <div class="modal-content">
-          <h4>Modal Header</h4>
-          <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
-      </div>
-
 
       <!-- <div class="card">
         <div class="card-content center">
@@ -163,7 +200,6 @@
         </div>
       </div> -->
 <!-- 
-
       <div class="row">
         <div class="card">
           <div class="card-content center">
@@ -270,8 +306,6 @@
           </div>
         </div>
       </div> -->
-      
-
     </div>
   </div>
 
