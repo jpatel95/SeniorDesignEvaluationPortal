@@ -31,7 +31,7 @@ function populateTable(){
 		'</div>' +
 
 		'</div>');
-	
+
 	var ref = firebase.database().ref("teams");
 	ref.once("value").then(function(snapshot) {
 		snapshot.forEach(function(childSnapshot) {
@@ -72,10 +72,6 @@ function populateTable(){
 			$("#tableBody").append(htmlString);
 		}
 	});
-}
-
-function downloadCSV(index){
-
 }
 
 function logout(){
