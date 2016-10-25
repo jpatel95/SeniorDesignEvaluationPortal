@@ -139,6 +139,9 @@ function loginJudgeImpl(pass){
 function resetPassword(){
   email = document.getElementById("email").value;
   console.log(email)
+  /*
+  Need Input Sanitization
+  */
   if(email != null && email!=""){
     firebase.auth().sendPasswordResetEmail(email);
     alert("Please check your email to reset the password.");
