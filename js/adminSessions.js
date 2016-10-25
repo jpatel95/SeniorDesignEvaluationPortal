@@ -38,7 +38,8 @@ function populateTable(){
 		});
 		$("#loader" ).remove();
 		console.log(teamsMap);
-		document.getElementById("tableDiv").innerHTML = '<table class="centered"><thead><tr><th data-field="nameOfTeam">Senior Design Team</th><th data-field="nameOfMembers">Members</th><th data-field="Session">Session</th><th data-field="buttonTeamReport">TeamReport</th></tr></thead><tbody id="tableBody"></tbody></table>';		
+		document.getElementById("tableDiv").innerHTML = '<table class="centered"><thead><tr><th data-field="department">Department</th><th data-field="session">Session</th><th data-field="buttonSessionReport">SessionReport</th></tr></thead><tbody id="tableBody"></tbody></table>';		
+		
 		for(var i=0; i<teamsMap.length; i++){
 			var obj = teamsMap[i];
 
@@ -49,7 +50,10 @@ function populateTable(){
 				}
 			}
 			names = names.substring(0, names.length-2);
-
+			
+			//initialize csv if this is the first project from a session
+			if(i == 0 || obj["Session"] != teamsMap[i-1]["Session"]){
+			}	
 			var prefix = 'data:application/octet-stream,';
 			var csv = 'Judge,Technical Accuracy,Creativity and Innovation,Supporting Analytical Work,Methodical Design Process Dem,Addresses Project Complexity,Completeness,Design & Analysis of Tests,Quality of Response During Q&A,Organization,Time Allotment,Visual Aids,Confidence and Poise,Comments';
 			csv = prefix.concat(encodeURIComponent(csv.trim()),'%0A');
@@ -62,13 +66,12 @@ function populateTable(){
 			}
 
 			console.log(csv);
-
-
-			//EXAMPLE CSV!
-			//data:application/octet-stream,field1%2Cfield2%0Afoo%2Cbar%0Agoo%2Cgai%0A"
-			// <a href=">CSV</a>
-			var htmlString = '<tr><td>'+obj["Title"]+'</td><td>'+ names +'</td><td>'+obj["Session"]+'</td><td><a class="btn-floating waves-effect red darken-4" href='+csv+'><i class="material-icons">info</i></a></td></tr>';
-			$("#tableBody").append(htmlString);
+			
+			//add table entry if this is the last team in the current session
+			if(i == (teamsMap.length-1) || teamsMap[i+1]["Session"] != obj["Session"]){
+				var htmlString = '<tr><td>'+obj["Category"]+'</td><td>'+obj["Session"]+'</td><td><a class="btn-floating waves-effect red darken-4" href='+csv+'><i class="material-icons">info</i></a></td></tr>';
+				$("#tableBody").append(htmlString);
+			}
 		}
 	});
 }
