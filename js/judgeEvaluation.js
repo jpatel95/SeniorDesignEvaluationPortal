@@ -65,21 +65,25 @@ $("#submit").click(function(){
     };
     console.log(eval);
 
-    //var ref = firebase.database().ref("teams/judgescores");
     var ref = firebase.database().ref("teams");
-
-    var result = ref.once("value").then(function(snapshot) {
+    ref.once("value").then(function(snapshot) {
+      //here snapshot.val() is array of teams
       console.log(snapshot.val());
-      var key = snapshot.forEach(function(childSnapshot) {
+      //found will be true if project title is in firebase
+      var found = snapshot.forEach(function(childSnapshot) {
+          //put each team object into childData
           var childData = childSnapshot.val();
-          console.log(key, childData);
+          console.log(childData);
           if($("#projectTitle").val() == childData.Title){
-            console.log("Match Found: " + childSnapshot.key);
-            return childSnapshot.key;
+            console.log("Match Found at Key: " + childSnapshot.key);
+            var reference = firebase.database().ref("teams/" + childSnapshot.key + "/judgescores");
+            console.log(reference);
+            //reference.push(eval);
+            //returning true will stop looping through teams
+            return true;
           }
       });
-      console.log(key);
+
     });
-  	//var result = ref.push(eval);
-    //console.log(result);
+
 });
