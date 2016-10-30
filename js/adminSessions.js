@@ -33,7 +33,7 @@ function populateTable(){
 
 		'</div>');
 	
-	var ref = firebase.database().ref("teams");
+	var ref = firebase.database().ref("roster");
 	ref.once("value").then(function(snapshot) {
 		snapshot.forEach(function(childSnapshot) {
 			teamsMap.push(childSnapshot.val());
@@ -57,6 +57,10 @@ function populateTable(){
 			var scoringSummary = {};
 			for(var i=0; i<sessionsMap[session].length; ++i){
 				var obj = sessionsMap[session][i];
+				if(obj == null || obj.Title == '' || sessionsMap[session][i]["judgescores"]==null){
+					continue;
+				}
+
 				if(scoringSummary[obj.Title]==null){
 					scoringSummary[obj.Title] = 0;
 				}
@@ -89,8 +93,10 @@ function populateTable(){
 			}
 			fullHref = fullHref.concat(summary);
 			// console.log(fullHref);
-			var htmlString = '<tr><td>'+obj["Category"]+'</td><td>'+obj["Session"]+'</td><td><a class="btn-floating waves-effect red darken-4" href='+fullHref+' download="session.csv"><i class="material-icons">info</i></a></td></tr>';
-			$("#tableBody").append(htmlString);
+			if(obj["Category"] != ""){
+				var htmlString = '<tr><td>'+obj["Category"]+'</td><td>'+obj["Session"]+'</td><td><a class="btn-floating waves-effect red darken-4" href='+fullHref+' download="session_'+obj["Session"]+'.csv"><i class="material-icons">info</i></a></td></tr>';
+				$("#tableBody").append(htmlString);
+			}
 		}	
 	});
 }

@@ -54,7 +54,7 @@ $("#submit").click(function(){
     var session =  $("#selectDepartment").val() +" "+ $("#selectSession").val();
 	var time =  $("#selectTime").val();
 
-    var ref = firebase.database().ref("teams");
+    var ref = firebase.database().ref("roster");
     ref.once("value").then(function(snapshot) {
       //here snapshot.val() is array of teams
       console.log(snapshot.val());
@@ -65,10 +65,11 @@ $("#submit").click(function(){
           console.log(childData);
           if(session == childData.Session && time==childData.Time){
             console.log("Match Found at Key: " + childSnapshot.key);
-            var reference = firebase.database().ref("teams/"+childSnapshot.key+"/judgescores");
+            var reference = firebase.database().ref("roster/"+childSnapshot.key+"/judgescores/");
             console.log(reference);
             reference.push(eval);
             //returning true will stop looping through teams
+            alert("Success");
             return true;
           }
       });
