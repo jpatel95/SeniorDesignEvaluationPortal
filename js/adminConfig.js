@@ -13,10 +13,11 @@ $(document).ready(function() {
 	})
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
-
+	$("#csv-file").change(handleFileSelect);
     document.getElementById("addJudge").addEventListener("click", addJudge);
     document.getElementById("removeJudge").addEventListener("click", removeJudge);
     document.getElementById("forgotCode").addEventListener("click", forgotCode);
+    document.getElementById("deleteAllTeamsBtn").addEventListener("click", deleteAllTeams);
 });
 
 function logout(){
@@ -119,11 +120,9 @@ function forgotCode(){
 function generateCode(){
     var text = "";
     var possible = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
-
     for(var i=0; i < 6; i++){
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
-
     return text;
 }
 
@@ -151,4 +150,47 @@ function checkIfCodeExists(pass){
 		}
 	});
 	console.log(result);
+}
+
+
+function handleFileSelect(evt) {
+  var data;
+  console.log(evt.target.files);
+  var file = evt.target.files[0];
+  Papa.parse(file, {
+    header: true,
+    dynamicTyping: true,
+    complete: function(results) {
+      data = results;
+      console.log(data.data);
+      delete data[''];
+      for (var i = 0; i < data.data.length; i++) {
+        var obj = data.data[i];
+        for(var key in obj){
+          if(key==''){
+            delete obj[key];
+          } else if(key.search('[.#$/]')!=-1){
+            var value = obj[key];
+            delete obj[key];
+            key = key.replace('[.#$/]', '');
+            obj[key] = value;
+          }
+        }
+
+        console.log(data.data[i]);
+        var ref = firebase.database().ref("roster");
+        ref.push(data.data[i]);
+      }
+ 	  alert("Teams Uploaded.");
+    }
+  });
+}
+
+
+
+function deleteAllTeams(){
+	console.log("Deleted");
+	var ref = firebase.database().ref("roster");
+	ref.remove();
+	alert("Deleted.");
 }
