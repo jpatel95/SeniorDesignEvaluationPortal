@@ -68,7 +68,7 @@ function populateTable(){
 			//EXAMPLE CSV!
 			//data:application/octet-stream,field1%2Cfield2%0Afoo%2Cbar%0Agoo%2Cgai%0A"
 			// <a href=">CSV</a>
-			var htmlString = '<tr><td>'+obj["Title"]+'</td><td>'+ names +'</td><td>'+obj["Session"]+'</td><td><a class="btn-floating waves-effect red darken-4" href='+csv+'><i class="material-icons">info</i></a></td></tr>';
+			var htmlString = '<tr><td>'+obj["Title"]+'</td><td>'+ names +'</td><td>'+obj["Session"]+'</td><td><a class="btn-floating waves-effect red darken-4" href="'+csv+'" download="team_'+obj["Title"]+'.csv"><i class="material-icons">info</i></a></td></tr>';
 			$("#tableBody").append(htmlString);
 		}
 	});
