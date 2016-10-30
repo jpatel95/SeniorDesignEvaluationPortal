@@ -1,0 +1,31 @@
+<script src="parse.min.js"></script>
+<script>
+var data;
+
+function handleFileSelect(evt) {
+  var file = evt.target.files[0];
+
+  Papa.parse(file, {
+    header: true,
+    dynamicTyping: true,
+    complete: function(results) {
+      data = results;
+      console.log(data);
+      //data.data is array of all teams
+      console.log(data.data);
+      //loop through and add judgescores field to each team
+      for (var i = 0; i < data.data.length; i++) {
+        data.data[i]["judgescores"] = {};
+      }
+      var ref = firebase.database().ref("roster");
+      //ref.push(data.data);
+    }
+  });
+}
+
+$(document).ready(function(){
+  $("#csv-file").change(handleFileSelect);
+});
+</script>
+
+<input type="file" id="csv-file" name="files"/>
