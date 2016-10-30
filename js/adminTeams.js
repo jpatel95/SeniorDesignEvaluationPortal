@@ -55,10 +55,10 @@ function populateTable(){
 			var csv = 'Judge,Technical Accuracy,Creativity and Innovation,Supporting Analytical Work,Methodical Design Process Dem,Addresses Project Complexity,Completeness,Design & Analysis of Tests,Quality of Response During Q&A,Organization,Time Allotment,Visual Aids,Confidence and Poise,Comments';
 			csv = prefix.concat(encodeURIComponent(csv.trim()),'%0A');
 
-			for (var key in obj["judgescores"]) {
-				var scoreObj = obj["judgescores"][key];
+			for (var key2 in obj["judgescores"]) {
+				var scoreObj = obj["judgescores"][key2];
 
-				console.log("Score Found: " + key);
+				console.log("Score Found: " + key2);
 				console.log(scoreObj);
 
 				var str = scoreObj['judgename']+','+scoreObj["score"]['Technical Accuracy']+','+scoreObj["score"]['Creativity and Innovation']+','+scoreObj["score"]['Supporting Analytical Work']+','+scoreObj["score"]['Methodical Design Process Dem']+','+scoreObj["score"]['Addresses Project Complexity']+','+scoreObj["score"]['Completeness']+','+scoreObj["score"]['Design & Analysis of Tests']+','+scoreObj["score"]['Quality of Response During Q&A']+','+scoreObj["score"]['Organization']+','+scoreObj["score"]['Time Allotment']+','+scoreObj["score"]['Visual Aids']+','+scoreObj["score"]['Confidence and Poise']+',"'+scoreObj["score"]['Comments']+'"';
@@ -68,9 +68,6 @@ function populateTable(){
 
 			console.log(csv);
 
-			//EXAMPLE CSV!
-			//data:application/octet-stream,field1%2Cfield2%0Afoo%2Cbar%0Agoo%2Cgai%0A"
-			// <a href=">CSV</a>
 			var htmlString = '<tr><td>'+obj["Title"]+'</td><td>'+ names +'</td><td>'+obj["Session"]+'</td><td><a class="btn-floating waves-effect red darken-4" href="'+csv+'" download="team_'+obj["Title"]+'.csv"><i class="material-icons">info</i></a></td></tr>';
 			$("#tableBody").append(htmlString);
 		}
