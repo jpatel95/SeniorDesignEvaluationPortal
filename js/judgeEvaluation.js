@@ -8,6 +8,9 @@ $(document).ready(function() {
 	var name = localStorage.getItem("name");
 	var code = localStorage.getItem("code");
 	console.log(name, code);
+	if(name==null || code==null){
+		logout();
+	}
 	$('select').material_select();
 	$("#welcomeHeader").append("Hello " + name.split(" ")[0] + ". Thank you for being with us today.");
 });
