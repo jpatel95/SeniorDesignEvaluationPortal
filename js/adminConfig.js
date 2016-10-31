@@ -47,6 +47,7 @@ function addJudge(){
         code:code,
         name:fullName
     });
+    setTimeout(function(){},1000);
 
     console.log(result);
     document.getElementById("firstNameAdd").value = "";
