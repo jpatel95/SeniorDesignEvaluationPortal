@@ -50,7 +50,7 @@ $("#submit").click(function(){
 
     console.log(eval);
 
-    
+
     var session =  $("#selectDepartment").val() +" "+ $("#selectSession").val();
 	var time =  $("#selectTime").val();
 
@@ -65,12 +65,34 @@ $("#submit").click(function(){
           console.log(childData);
           if(session == childData.Session && time==childData.Time){
             console.log("Match Found at Key: " + childSnapshot.key);
-            var reference = firebase.database().ref("roster/"+childSnapshot.key+"/judgescores/");
+
+            var newref = firebase.database().ref("roster/" + childSnapshot.key + "/judgescores");
+            newref.once("value").then(function(snapshot) {
+              snapshot.forEach(function(snap){
+                var childData = snap.val();
+                console.log(childData.judgename);
+                console.log(childData);
+                if(name == childData.judgename){
+                  newref.child(snap.key).remove();
+                  console.log(snap.key);
+
+                }
+
+              });
+              var reference = firebase.database().ref("roster/"+childSnapshot.key+"/judgescores/");
+              console.log(reference);
+              reference.push(eval);
+              //returning true will stop looping through teams
+              alert("Success");
+              return true;
+            });
+
+            /*var reference = firebase.database().ref("roster/"+childSnapshot.key+"/judgescores/");
             console.log(reference);
             reference.push(eval);
             //returning true will stop looping through teams
             alert("Success");
-            return true;
+            return true;*/
           }
       });
 
