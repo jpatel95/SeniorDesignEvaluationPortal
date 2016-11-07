@@ -50,7 +50,7 @@ function populateTable(){
 			sessionsMap[obj.Session].push(obj);
 		}
 
-		var csvHeader = "".concat(encodeURIComponent('Judge,TotalScore,Average Score,Technical Accuracy,Creativity and Innovation,Supporting Analytical Work,Methodical Design Process Dem,Addresses Project Complexity,Completeness,Design & Analysis of Tests,Quality of Response During Q&A,Organization,Time Allotment,Visual Aids,Confidence and Poise,Comments'), '%0A');
+		var csvHeader = "".concat(encodeURIComponent(',Judge,TotalScore,Average Score,Technical Accuracy,Creativity and Innovation,Supporting Analytical Work,Methodical Design Process Dem,Addresses Project Complexity,Completeness,Design & Analysis of Tests,Quality of Response During Q&A,Organization,Time Allotment,Visual Aids,Confidence and Poise,Considerations Addressed,Comments'), '%0A');
 		for(var session in sessionsMap){
 			var prefix = 'data:application/octet-stream,' + encodeURIComponent('Session,'.concat(session)) + '%0A';
 			var fullHref = prefix;
@@ -67,7 +67,7 @@ function populateTable(){
 
 				var totalAverage = 0;
 				var countJudges = 0;
-				fullHref = fullHref.concat(encodeURIComponent('Individual Presentation Scores'), '%0A', encodeURIComponent("Presentation Name,"), encodeURIComponent(obj.Title), '%0A', encodeURIComponent("Number of Judges Reporting Scores,"), Object.keys(sessionsMap[session][i]["judgescores"]).length, '%0A%0A', csvHeader);
+				fullHref = fullHref.concat('%0A',encodeURIComponent('Individual Presentation Score'), '%0A', encodeURIComponent("Presentation Name,"), encodeURIComponent(obj.Title), '%0A', encodeURIComponent("Number of Judges Reporting Scores,"), Object.keys(sessionsMap[session][i]["judgescores"]).length, '%0A%0A', csvHeader);
 				for (var key2 in obj["judgescores"]) {
 					var scoreObj = obj["judgescores"][key2];
 					var totalScore = 0;
@@ -79,15 +79,21 @@ function populateTable(){
 					//Totalscore/12 because 12 grading fields.
 					var curAverage = totalScore/(12);
 					totalAverage += curAverage;
-					var str = scoreObj['judgename']+','+totalScore+','+curAverage+','+scoreObj["score"]['Technical Accuracy']+','+scoreObj["score"]['Creativity and Innovation']+','+scoreObj["score"]['Supporting Analytical Work']+','+scoreObj["score"]['Methodical Design Process Dem']+','+scoreObj["score"]['Addresses Project Complexity']+','+scoreObj["score"]['Completeness']+','+scoreObj["score"]['Design & Analysis of Tests']+','+scoreObj["score"]['Quality of Response During Q&A']+','+scoreObj["score"]['Organization']+','+scoreObj["score"]['Time Allotment']+','+scoreObj["score"]['Visual Aids']+','+scoreObj["score"]['Confidence and Poise']+',"'+scoreObj["score"]['Comments']+'"';
+
+					var considerations = '';
+					for(var index in scoreObj["score"]['Considerations Addressed']){
+						considerations = considerations.concat(scoreObj["score"]['Considerations Addressed'][index], ' and ');
+					}
+					considerations = considerations.substring(0, considerations.length-5);
+					var str = ','+scoreObj['judgename']+','+totalScore+','+curAverage+','+scoreObj["score"]['Technical Accuracy']+','+scoreObj["score"]['Creativity and Innovation']+','+scoreObj["score"]['Supporting Analytical Work']+','+scoreObj["score"]['Methodical Design Process Dem']+','+scoreObj["score"]['Addresses Project Complexity']+','+scoreObj["score"]['Completeness']+','+scoreObj["score"]['Design & Analysis of Tests']+','+scoreObj["score"]['Quality of Response During Q&A']+','+scoreObj["score"]['Organization']+','+scoreObj["score"]['Time Allotment']+','+scoreObj["score"]['Visual Aids']+','+scoreObj["score"]['Confidence and Poise']+','+considerations+',"'+scoreObj["score"]['Comments']+'"';
 					str = encodeURIComponent(str.trim()).concat('%0A');
 					fullHref=fullHref.concat(str);
 				}
 				totalAverage = totalAverage/Object.keys(obj["judgescores"]).length;
 				scoringSummary[obj.Title] = totalAverage;
-				fullHref=fullHref.concat('%0A', encodeURIComponent('Average Judge Score,'), totalAverage);
+				fullHref=fullHref.concat('%0A', encodeURIComponent(',Average Judge Score,'), totalAverage);
 			}
-			var summary = '%0A%0A'.concat(encodeURIComponent('Average Scores By Team'), '%0A');
+			var summary = '%0A%0A'.concat(encodeURIComponent('Average Scores By Team:'), '%0A');
 			for(var key in scoringSummary){
 				summary = summary.concat(encodeURIComponent(key),',', scoringSummary[key], '%0A');
 			}
