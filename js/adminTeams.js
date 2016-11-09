@@ -52,7 +52,7 @@ function populateTable(){
 			names = names.substring(0, names.length-2);
 
 			var prefix = 'data:application/octet-stream,';
-			var csv = encodeURIComponent('Judge,Total Score,Technical Accuracy,Creativity and Innovation,Supporting Analytical Work,Methodical Design Process Dem,Addresses Project Complexity,Completeness,Design & Analysis of Tests,Quality of Response During Q&A,Organization,Time Allotment,Visual Aids,Confidence and Poise,Comments');
+			var csv = encodeURIComponent('Judge,Total Score,Technical Accuracy,Creativity and Innovation,Supporting Analytical Work,Methodical Design Process Dem,Addresses Project Complexity,Completeness,Design & Analysis of Tests,Quality of Response During Q&A,Organization,Time Allotment,Visual Aids,Confidence and Poise,Considerations Addressed,Comments');
 			csv = prefix.concat(csv, '%0A');
 
 			for (var key2 in obj["judgescores"]) {
@@ -67,8 +67,12 @@ function populateTable(){
 
 				console.log("Score Found: " + key2);
 				console.log(scoreObj);
-
-				var str = scoreObj['judgename']+','+totalScore+','+scoreObj["score"]['Technical Accuracy']+','+scoreObj["score"]['Creativity and Innovation']+','+scoreObj["score"]['Supporting Analytical Work']+','+scoreObj["score"]['Methodical Design Process Dem']+','+scoreObj["score"]['Addresses Project Complexity']+','+scoreObj["score"]['Completeness']+','+scoreObj["score"]['Design & Analysis of Tests']+','+scoreObj["score"]['Quality of Response During Q&A']+','+scoreObj["score"]['Organization']+','+scoreObj["score"]['Time Allotment']+','+scoreObj["score"]['Visual Aids']+','+scoreObj["score"]['Confidence and Poise']+',"'+scoreObj["score"]['Comments']+'"';
+				var considerations = '';
+				for(var index in scoreObj["score"]['Considerations Addressed']){
+					considerations = considerations.concat(scoreObj["score"]['Considerations Addressed'][index], ' and ');
+				}
+				considerations = considerations.substring(0, considerations.length-5);
+				var str = scoreObj['judgename']+','+totalScore+','+scoreObj["score"]['Technical Accuracy']+','+scoreObj["score"]['Creativity and Innovation']+','+scoreObj["score"]['Supporting Analytical Work']+','+scoreObj["score"]['Methodical Design Process Dem']+','+scoreObj["score"]['Addresses Project Complexity']+','+scoreObj["score"]['Completeness']+','+scoreObj["score"]['Design & Analysis of Tests']+','+scoreObj["score"]['Quality of Response During Q&A']+','+scoreObj["score"]['Organization']+','+scoreObj["score"]['Time Allotment']+','+scoreObj["score"]['Visual Aids']+','+scoreObj["score"]['Confidence and Poise']+',"'+ considerations +'","'+scoreObj["score"]['Comments']+'"';
 				str = encodeURIComponent(str.trim()).concat('%0A');
 				csv=csv.concat(str);
 			}
