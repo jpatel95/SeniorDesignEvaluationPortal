@@ -50,7 +50,7 @@ function populateTable(){
 			sessionsMap[obj.Session].push(obj);
 		}
 
-		var csvHeader = "".concat(encodeURIComponent(',Judge,TotalScore,Average Score,Technical Accuracy,Creativity and Innovation,Supporting Analytical Work,Methodical Design Process Dem,Addresses Project Complexity,Completeness,Design & Analysis of Tests,Quality of Response During Q&A,Organization,Time Allotment,Visual Aids,Confidence and Poise,Considerations Addressed,Comments'), '%0A');
+		var csvHeader = "".concat(encodeURIComponent(',Judge,TotalScore,Average Score,Technical Accuracy,Creativity and Innovation,Supporting Analytical Work,Methodical Design Process Dem,Addresses Project Complexity,Completeness,Design & Analysis of Tests,Quality of Response During Q&A,Organization,Time Allotment,Visual Aids,Confidence and Poise,Comments'), '%0A');
 		for(var session in sessionsMap){
 			var prefix = 'data:application/octet-stream,' + encodeURIComponent('Session,'.concat(session)) + '%0A';
 			var fullHref = prefix;
@@ -80,12 +80,12 @@ function populateTable(){
 					var curAverage = totalScore/(12);
 					totalAverage += curAverage;
 
-					var considerations = '';
-					for(var index in scoreObj["score"]['Considerations Addressed']){
-						considerations = considerations.concat(scoreObj["score"]['Considerations Addressed'][index], ' and ');
-					}
-					considerations = considerations.substring(0, considerations.length-5);
-					var str = ','+scoreObj['judgename']+','+totalScore+','+curAverage+','+scoreObj["score"]['Technical Accuracy']+','+scoreObj["score"]['Creativity and Innovation']+','+scoreObj["score"]['Supporting Analytical Work']+','+scoreObj["score"]['Methodical Design Process Dem']+','+scoreObj["score"]['Addresses Project Complexity']+','+scoreObj["score"]['Completeness']+','+scoreObj["score"]['Design & Analysis of Tests']+','+scoreObj["score"]['Quality of Response During Q&A']+','+scoreObj["score"]['Organization']+','+scoreObj["score"]['Time Allotment']+','+scoreObj["score"]['Visual Aids']+','+scoreObj["score"]['Confidence and Poise']+','+considerations+',"'+scoreObj["score"]['Comments']+'"';
+					// var considerations = '';
+					// for(var index in scoreObj["score"]['Considerations Addressed']){
+					// 	considerations = considerations.concat(scoreObj["score"]['Considerations Addressed'][index], ' and ');
+					// }
+					// considerations = considerations.substring(0, considerations.length-5);
+					var str = ','+scoreObj['judgename']+','+totalScore+','+curAverage+','+scoreObj["score"]['Technical Accuracy']+','+scoreObj["score"]['Creativity and Innovation']+','+scoreObj["score"]['Supporting Analytical Work']+','+scoreObj["score"]['Methodical Design Process Dem']+','+scoreObj["score"]['Addresses Project Complexity']+','+scoreObj["score"]['Completeness']+','+scoreObj["score"]['Design & Analysis of Tests']+','+scoreObj["score"]['Quality of Response During Q&A']+','+scoreObj["score"]['Organization']+','+scoreObj["score"]['Time Allotment']+','+scoreObj["score"]['Visual Aids']+','+scoreObj["score"]['Confidence and Poise']+',"'+scoreObj["score"]['Comments']+'"';
 					str = encodeURIComponent(str.trim()).concat('%0A');
 					fullHref=fullHref.concat(str);
 				}

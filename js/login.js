@@ -15,7 +15,7 @@ function buttonJudgeClick() {
   document.getElementById("loginForm").innerHTML = '<div class="row">' +
           '<div class="input-field col s12">' +
             '<input id="password" type="password" class="validate" required>' +
-            '<label for="password">Code</label>' +
+            '<label for="password">Judge Code</label>' +
           '</div>' +
         '</div>' +
         '<div class="row center">' +
@@ -34,6 +34,7 @@ function buttonAdminClick() {
 	}
 	document.getElementById("loginButtonRow").innerHTML = '<div class="col s6"><button class="btn waves-effect red lighten-3" onClick="buttonJudgeClick()" id="buttonJudge">Judge</button></div><div class="col s6"><button class="btn waves-effect red darken-4" onClick="buttonAdminClick()" id="buttonAdmin">Admin</button></div>';
 	document.getElementById("loginForm").innerHTML = '<div class="row">' +
+            '<p class="center">This login is for administrators only.<br/> If you are a judge, please click on the Judge tab.</p>' +
             '<div class="input-field col s12">' +
              '<input id="email" type="email" class="validate" required>' +
               '<label for="email" data-error="Invalid Data" data-success="right">Email</label>' +
