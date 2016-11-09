@@ -30,12 +30,10 @@ function logout(){
 
 
 function addJudge(){
-	var firstName = document.getElementById("firstNameAdd").value;
-	var lastName = document.getElementById("lastNameAdd").value;
-
-	/*
-	NEED INPUT SANITIZATION
-	*/
+	//the regex in .replace will sanitize input
+	var firstName = (document.getElementById("firstNameAdd").value).replace(/<\/?[^>]+(>|$)/g, "");
+	var lastName = (document.getElementById("lastNameAdd").value).replace(/<\/?[^>]+(>|$)/g, "");
+	
 	var fullName = firstName +" "+lastName;
 	console.log(fullName);
 
@@ -52,16 +50,16 @@ function addJudge(){
     console.log(result);
     document.getElementById("firstNameAdd").value = "";
 	document.getElementById("lastNameAdd").value = "";
-	alert(code);
+	
+	//Ask user to copy the Judge ID manually	
+	window.prompt("Copy to clipboard: Ctrl+C (PC) or Cmd+C (MAC), Enter",code);
 }
 
 function removeJudge(){
-	var firstName = document.getElementById("firstNameRemove").value;
-	var lastName = document.getElementById("lastNameRemove").value;
-
-	/*
-	NEED INPUT SANITIZATION
-	*/
+	//the regex in .replace will sanitize input
+	var firstName = (document.getElementById("firstNameAdd").value).replace(/<\/?[^>]+(>|$)/g, "");
+	var lastName = (document.getElementById("lastNameAdd").value).replace(/<\/?[^>]+(>|$)/g, "");
+	
 	var fullName = firstName +" "+lastName;
 	console.log(fullName);
 
@@ -87,12 +85,10 @@ function removeJudge(){
 }
 
 function forgotCode(){
-	var firstName = document.getElementById("firstNameForgot").value;
-	var lastName = document.getElementById("lastNameForgot").value;
-
-	/*
-	NEED INPUT SANITIZATION
-	*/
+	//the regex in .replace will sanitize input
+	var firstName = (document.getElementById("firstNameAdd").value).replace(/<\/?[^>]+(>|$)/g, "");
+	var lastName = (document.getElementById("lastNameAdd").value).replace(/<\/?[^>]+(>|$)/g, "");
+	
 	var fullName = firstName +" "+lastName;
 	console.log(fullName);
 

@@ -71,15 +71,13 @@ function login(){
     console.log(firebase.auth().currentUser.uid);
     firebase.auth().signOut();
   }
-  /*
-  Need to add input sanitization.
-  */
+  //the regex in .replace will sanitize input
   if(isAdminSelected){
-      email = document.getElementById("email").value;
-      pass = document.getElementById("password").value;
+      email = (document.getElementById("email").value).replace(/<\/?[^>]+(>|$)/g, "");
+      pass = (document.getElementById("password").value).replace(/<\/?[^>]+(>|$)/g, "");
       loginAdminImpl(email, pass);
   } else {
-      pass = document.getElementById("password").value;
+      pass = (document.getElementById("password").value).replace(/<\/?[^>]+(>|$)/g, "");
       loginJudgeImpl(pass);
   }
 }
@@ -138,11 +136,10 @@ function loginJudgeImpl(pass){
 }
 
 function resetPassword(){
-  email = document.getElementById("email").value;
+ //the regex in .replace will sanitize input
+  email = (document.getElementById("email").value).replace(/<\/?[^>]+(>|$)/g, "");
   console.log(email)
-  /*
-  Need Input Sanitization
-  */
+  
   if(email != null && email!=""){
     firebase.auth().sendPasswordResetEmail(email);
     alert("Please check your email to reset the password.");
