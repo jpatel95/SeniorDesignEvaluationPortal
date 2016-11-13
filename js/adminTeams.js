@@ -112,7 +112,7 @@ function populateTable(){
       console.log(test);
       */
 
-      var htmlForNewWindow = "<html>" + write(finalCsv) + "</html>";
+      var htmlForNewWindow = "<html>" + write(finalCsv) + "<button id='printpagebutton' onclick='printReport()'>Print Report</button><script>function printReport(){var printButton = document.getElementById('printpagebutton');printButton.style.visibility = 'hidden';window.print();printButton.style.visibility = 'visible';}</script></html>";
       /*pass the transposed csv data to the write function which will format
       the table to be displayed on the new window*/
       console.log(htmlForNewWindow);
@@ -207,4 +207,11 @@ function writeTableToNewWindow(index) {
     var data = htmlMap[index];
     var myWindow = window.open("","");
 		myWindow.document.write(data);
+}
+
+function printReport(){
+    var printButton = document.getElementById("printpagebutton");
+    printButton.style.visibility = 'hidden';
+    window.print()
+    printButton.style.visibility = 'visible';
 }
