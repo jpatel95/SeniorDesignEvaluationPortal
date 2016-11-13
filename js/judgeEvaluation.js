@@ -23,6 +23,81 @@ function logout(){
 }
 
 $("#submit").click(function(){
+
+    if(!$('#selectDepartment').val()){
+      alert("Please select a Department");
+      return;
+    }
+    else if (!$('#selectSession').val()) {
+      alert("Please select a Session");
+      return;
+    }
+    else if (!$('#selectTime').val()) {
+      alert("Please select a time");
+      return;
+    }
+    else if(!$('input[name=technical]:checked').length){
+      alert("Please give a score for Technical Accuracy")
+      return;
+    }
+    else if (!$('input[name=creativity]:checked').length) {
+      alert("Please give a score for Creativity and Innovation");
+      return;
+    }
+    else if (!$('input[name=supporting]:checked').length) {
+      alert("Please give a score for Supporting Analytical Work");
+      return;
+    }
+    else if (!$('input[name=methodical]:checked').length) {
+      alert("Please give a score for Methodical Design Process Dem");
+      return;
+    }
+    else if (!$('input[name=addresses]:checked').length) {
+      alert("Please give a score for Addresses Project Complexity");
+      return;
+    }
+    else if (!$('input[name=expectation]:checked').length) {
+      alert("Please give a score for Completeness");
+      return;
+    }
+    else if (!$('input[name=design]:checked').length) {
+      alert("Please give a score for Design & Analysis of Tests");
+      return;
+    }
+    else if (!$('input[name=quality]:checked').length) {
+      alert("Please give a score for Quality of Response During Q&A");
+      return;
+    }
+    else if (!$('input[name=organization]:checked').length) {
+      alert("Please give a score for Organization");
+      return;
+    }
+    else if (!$('input[name=time]:checked').length) {
+      alert("Please give a score for Time Allotment");
+      return;
+    }
+    else if (!$('input[name=visual]:checked').length) {
+      alert("Please give a score for Visual Aids");
+      return;
+    }
+    else if (!$('input[name=confidence]:checked').length) {
+      alert("Please give a score for Confidence and Poise");
+      return;
+    }
+    else if(!$('#considerations').val().length){
+      alert("Please select one or more considerations addressed");
+      return;
+    }
+
+    /*var $radios = $(".card");
+    if($radios.find("input:radio:checked").length === $radios.length) {
+      // All Checked
+    }
+    else {
+      alert("Form not completely filled out");
+      return;
+    }*/
+
   	var name = localStorage.getItem("name");
 
     var scores = {

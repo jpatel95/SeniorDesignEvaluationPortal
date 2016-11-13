@@ -13,9 +13,12 @@ $(document).ready(function() {
 		}
 	})
 	populateTable();
+  console.log(htmlMap);
 });
 
 var teamsMap = [];
+
+var htmlMap = [];
 
 function populateTable(){
 	console.log("populating data");
@@ -39,7 +42,7 @@ function populateTable(){
 		});
 		$("#loader" ).remove();
 		console.log(teamsMap);
-		document.getElementById("tableDiv").innerHTML = '<table class="centered"><thead><tr><th data-field="nameOfTeam">Senior Design Team</th><th data-field="nameOfMembers">Members</th><th data-field="Session">Session</th><th data-field="buttonTeamReport">TeamReport</th></tr></thead><tbody id="tableBody"></tbody></table>';		
+		document.getElementById("tableDiv").innerHTML = '<table class="centered"><thead><tr><th data-field="nameOfTeam">Senior Design Team</th><th data-field="nameOfMembers">Members</th><th data-field="Session">Session</th><th data-field="buttonTeamReport">TeamReport</th></tr></thead><tbody id="tableBody"></tbody></table>';
 		for(var i=0; i<teamsMap.length; i++){
 			var obj = teamsMap[i];
 
@@ -53,7 +56,11 @@ function populateTable(){
 
 			var prefix = 'data:application/octet-stream,';
 			var csv = encodeURIComponent('Judge,Total Score,Technical Accuracy,Creativity and Innovation,Supporting Analytical Work,Methodical Design Process Dem,Addresses Project Complexity,Completeness,Design & Analysis of Tests,Quality of Response During Q&A,Organization,Time Allotment,Visual Aids,Confidence and Poise,Considerations Addressed,Comments');
-			csv = prefix.concat(csv, '%0A');
+
+      var csvNoPrefix = csv;
+      csvNoPrefix = csvNoPrefix.concat('%0A');
+
+      csv = prefix.concat(csv, '%0A');
 
 			for (var key2 in obj["judgescores"]) {
 				var scoreObj = obj["judgescores"][key2];
@@ -75,13 +82,52 @@ function populateTable(){
 				var str = scoreObj['judgename']+','+totalScore+','+scoreObj["score"]['Technical Accuracy']+','+scoreObj["score"]['Creativity and Innovation']+','+scoreObj["score"]['Supporting Analytical Work']+','+scoreObj["score"]['Methodical Design Process Dem']+','+scoreObj["score"]['Addresses Project Complexity']+','+scoreObj["score"]['Completeness']+','+scoreObj["score"]['Design & Analysis of Tests']+','+scoreObj["score"]['Quality of Response During Q&A']+','+scoreObj["score"]['Organization']+','+scoreObj["score"]['Time Allotment']+','+scoreObj["score"]['Visual Aids']+','+scoreObj["score"]['Confidence and Poise']+',"'+ considerations +'","'+scoreObj["score"]['Comments']+'"';
 				str = encodeURIComponent(str.trim()).concat('%0A');
 				csv=csv.concat(str);
+
+
+        csvNoPrefix = csvNoPrefix.concat(str);
 			}
 
 			console.log(csv);
 
+      console.log(csvNoPrefix);
+
+      var noPrefix = decodeURIComponent(csvNoPrefix);
+      //we need to decode here so our parsing tool will work
+      var t = Papa.parse(noPrefix);
+      //t now holds the data in json format
+      console.log(t);
+      t.data.pop();
+      var n=transpose(t.data);
+      //n should hold the transposed data in json format
+      console.log(n);
+
+      var finalCsv = Papa.unparse(n);
+      //finalCsv holds the transposed data in csv format here
+      var transAndEncoded = encodeURIComponent(finalCsv);
+      console.log(finalCsv);
+      console.log(transAndEncoded);
+
+      /*this is to download transposed matrix as csv
+      var test = prefix.concat(transAndEncoded);
+      console.log(test);
+      */
+
+      var htmlForNewWindow = "<html>" + write(finalCsv) + "</html>";
+      /*pass the transposed csv data to the write function which will format
+      the table to be displayed on the new window*/
+      console.log(htmlForNewWindow);
+
+      //push html string to array
+      htmlMap.push(htmlForNewWindow);
+
 			if(obj["Title"] != ""){
+        /*This was for downloading csv but now we are printing to separate html page
 				var htmlString = '<tr><td>'+obj["Title"]+'</td><td>'+ names +'</td><td>'+obj["Session"]+'</td><td><a class="btn-floating waves-effect red darken-4" href="'+csv+'" download="team_'+obj["Title"]+'.csv"><i class="material-icons">info</i></a></td></tr>';
-				$("#tableBody").append(htmlString);
+        */
+        var htmlString = '<tr><td>'+obj["Title"]+'</td><td>'+ names +'</td><td>'+obj["Session"]+'</td><td><button class="btn-floating waves-effect red darken-4" id="button'+ i +'" onclick="writeTableToNewWindow('+ i +')"><i class="material-icons">info</i></button></td></tr>';
+        console.log(htmlString);
+
+        $("#tableBody").append(htmlString);
 			}
 		}
 	});
@@ -95,3 +141,70 @@ function logout(){
 	window.location.replace("../index.html");
 }
 
+transpose = function(a) {
+
+  // Calculate the width and height of the Array
+  var w = a.length ? a.length : 0,
+    h = a[0] instanceof Array ? a[0].length : 0;
+
+  // In case it is a zero matrix, no transpose routine needed.
+  if(h === 0 || w === 0) { return []; }
+
+  /**
+   * @var {Number} i Counter
+   * @var {Number} j Counter
+   * @var {Array} t Transposed data is stored in this array.
+   */
+  var i, j, t = [];
+
+  // Loop through every item in the outer array (height)
+  for(i=0; i<h; i++) {
+
+    // Insert a new row (array)
+    t[i] = [];
+
+    // Loop through every item per item in outer array (width)
+    for(j=0; j<w; j++) {
+
+      // Save transposed data.
+      t[i][j] = a[j][i];
+    }
+  }
+
+  return t;
+};
+
+function write(data) {
+	// start the table
+	var html = '<table style="border-collapse:collapse; border: 1px solid black">';
+
+	// split into lines
+	var rows = data.split("\n");
+
+	// parse lines
+	rows.forEach( function getvalues(ourrow) {
+
+		// start a table row
+		html += "<tr style='border: 1px solid black'>";
+
+		// split line into columns
+		var columns = ourrow.split(",");
+
+    for (var i = 0; i < columns.length; i++) {
+      html += "<td style='border: 1px solid black'>" + columns[i] + "</td>";
+    }
+
+		// close row
+		html += "</tr>";
+	})
+	// close table
+	html += "</table>";
+
+	return html;
+}
+
+function writeTableToNewWindow(index) {
+    var data = htmlMap[index];
+    var myWindow = window.open("","");
+		myWindow.document.write(data);
+}
