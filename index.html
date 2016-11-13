@@ -46,10 +46,38 @@
             <div class="col s2">
             </div>
           </div>
-          <hr/>
+        </div>
+        <div class="card-panel">
+          <div class="row">
+            <h5 class="red-text text-darken-4">Judge Login</h5>
+            <p>
+              Judges, please enter your code to enter the evaluation portal.
+            </p>
+            <div class="col s4">
+            </div>
+            <form action="javascript:login();" class="col s4 left-align" id="loginForm">
+              <div class="row center" id="loadingDiv">
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="password" type="password" class="validate" required>
+                  <label for="password">Judge Code</label>
+                </div>
+              </div>
+              <div class="row center">
+                <button class="btn waves-effect red darken-4" type="submit" name="login">Login
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+            </form>
+            <div class="col s4">
+            </div>
+          </div>
+        </div>
+        <div class="card-panel">
           <span>
             <br/>
-            <h5>Schedule</h5>
+            <h5 class="red-text text-darken-4">Schedule</h5>
             <table class="striped">
               <thead>
                 <tr>
@@ -95,13 +123,6 @@
             <p>
               For more schedule information click <a href="https://www.scu.edu/media/school-of-engineering/pdfs/2016-Senior-Design-Program.pdf">here</a>.
             </p>
-            <hr/>
-            <br/>
-            <h5>Evaluation Portal</h5>
-            <p>
-              Click the login button below to enter the evaluation portal.
-            </p>
-            <a href="html/login.html" id="download-button" class="btn-large waves-effect waves-light red darken-4">Login</a>
           </span>
         </div>
       </div>
@@ -122,8 +143,21 @@
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDB-Htzx4h_OrYU2Ye5f3BpQ2H36o3MHMQ",
+      authDomain: "senior-design-evaluation.firebaseapp.com",
+      databaseURL: "https://senior-design-evaluation.firebaseio.com",
+      storageBucket: "",
+      messagingSenderId: "52750955691"
+    };
+    firebase.initializeApp(config);
+  </script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/index.js"></script>
   </body>
 
 </html>

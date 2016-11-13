@@ -12,7 +12,7 @@ $(document).ready(function() {
 		logout();
 	}
 	$('select').material_select();
-	$("#welcomeHeader").append("Hello " + name.split(" ")[0] + ". Thank you for being with us today.");
+	$("#welcomeHeader").append("Hello, " + name.split(" ")[0] + ". Thank you for being with us today.");
 });
 
 function logout(){
