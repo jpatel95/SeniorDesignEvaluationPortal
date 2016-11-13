@@ -159,6 +159,7 @@ $("#submit").click(function(){
               reference.push(eval);
               //returning true will stop looping through teams
               alert("Success");
+              location.reload();
               return true;
             });
 
