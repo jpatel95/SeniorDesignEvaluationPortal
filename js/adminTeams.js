@@ -107,10 +107,10 @@ function populateTable(){
       console.log(finalCsv);
       console.log(transAndEncoded);
 
-      /*this is to download transposed matrix as csv
-      var test = prefix.concat(transAndEncoded);
+      //this is to download transposed matrix as csv
+      transAndEncoded = prefix.concat(transAndEncoded);
       console.log(test);
-      */
+
 
       //var htmlForNewWindow = "<html>" + write(finalCsv) + "<button id='printpagebutton' onclick='printReport()'>Print Report</button><script>function printReport(){var printButton = document.getElementById('printpagebutton');printButton.style.visibility = 'hidden';window.print();printButton.style.visibility = 'visible';}</script></html>";
       /*pass the transposed csv data to the write function which will format
