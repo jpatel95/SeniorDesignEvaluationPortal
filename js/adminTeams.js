@@ -108,7 +108,7 @@ function populateTable(){
       console.log(transAndEncoded);
 
       //this is to download transposed matrix as csv
-      transAndEncoded = prefix.concat(transAndEncoded);
+      var test = prefix.concat(transAndEncoded);
       console.log(test);
 
 
@@ -122,7 +122,7 @@ function populateTable(){
 
 			if(obj["Title"] != ""){
         //This was for downloading csv but now we are printing to separate html page
-				var htmlString = '<tr><td>'+obj["Title"]+'</td><td>'+ names +'</td><td>'+obj["Session"]+'</td><td><a class="btn-floating waves-effect red darken-4" href="'+transAndEncoded+'" download="team_'+obj["Title"]+'.csv"><i class="material-icons">info</i></a></td></tr>';
+				var htmlString = '<tr><td>'+obj["Title"]+'</td><td>'+ names +'</td><td>'+obj["Session"]+'</td><td><a class="btn-floating waves-effect red darken-4" href="'+test+'" download="team_'+obj["Title"]+'.csv"><i class="material-icons">info</i></a></td></tr>';
 
         /*This was for printing on separate page
         var htmlString = '<tr><td>'+obj["Title"]+'</td><td>'+ names +'</td><td>'+obj["Session"]+'</td><td><button class="btn-floating waves-effect red darken-4" id="button'+ i +'" onclick="writeTableToNewWindow('+ i +')"><i class="material-icons">info</i></button></td></tr>';
