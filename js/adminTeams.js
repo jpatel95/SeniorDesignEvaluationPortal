@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 var teamsMap = [];
 
-var htmlMap = [];
+//var htmlMap = [];
 
 function populateTable(){
 	console.log("populating data");
@@ -112,20 +112,21 @@ function populateTable(){
       console.log(test);
       */
 
-      var htmlForNewWindow = "<html>" + write(finalCsv) + "<button id='printpagebutton' onclick='printReport()'>Print Report</button><script>function printReport(){var printButton = document.getElementById('printpagebutton');printButton.style.visibility = 'hidden';window.print();printButton.style.visibility = 'visible';}</script></html>";
+      //var htmlForNewWindow = "<html>" + write(finalCsv) + "<button id='printpagebutton' onclick='printReport()'>Print Report</button><script>function printReport(){var printButton = document.getElementById('printpagebutton');printButton.style.visibility = 'hidden';window.print();printButton.style.visibility = 'visible';}</script></html>";
       /*pass the transposed csv data to the write function which will format
       the table to be displayed on the new window*/
-      console.log(htmlForNewWindow);
+      //console.log(htmlForNewWindow);
 
       //push html string to array
-      htmlMap.push(htmlForNewWindow);
+      //htmlMap.push(htmlForNewWindow);
 
 			if(obj["Title"] != ""){
-        /*This was for downloading csv but now we are printing to separate html page
-				var htmlString = '<tr><td>'+obj["Title"]+'</td><td>'+ names +'</td><td>'+obj["Session"]+'</td><td><a class="btn-floating waves-effect red darken-4" href="'+csv+'" download="team_'+obj["Title"]+'.csv"><i class="material-icons">info</i></a></td></tr>';
-        */
+        //This was for downloading csv but now we are printing to separate html page
+				var htmlString = '<tr><td>'+obj["Title"]+'</td><td>'+ names +'</td><td>'+obj["Session"]+'</td><td><a class="btn-floating waves-effect red darken-4" href="'+transAndEncoded+'" download="team_'+obj["Title"]+'.csv"><i class="material-icons">info</i></a></td></tr>';
+
+        /*This was for printing on separate page
         var htmlString = '<tr><td>'+obj["Title"]+'</td><td>'+ names +'</td><td>'+obj["Session"]+'</td><td><button class="btn-floating waves-effect red darken-4" id="button'+ i +'" onclick="writeTableToNewWindow('+ i +')"><i class="material-icons">info</i></button></td></tr>';
-        console.log(htmlString);
+        console.log(htmlString);*/
 
         $("#tableBody").append(htmlString);
 			}
