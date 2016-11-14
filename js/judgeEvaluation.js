@@ -138,7 +138,7 @@ $("#submit").click(function(){
           //put each team object into childData
           var childData = childSnapshot.val();
           console.log(childData);
-          if(session == childData.Session && time==childData.Time){
+          if(session == childData.Session && time==childData.Time.split('-')[0]){
             console.log("Match Found at Key: " + childSnapshot.key);
 
             var newref = firebase.database().ref("roster/" + childSnapshot.key + "/judgescores");
