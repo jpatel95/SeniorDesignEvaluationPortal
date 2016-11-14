@@ -57,8 +57,8 @@ function addJudge(){
 
 function removeJudge(){
 	//the regex in .replace will sanitize input
-	var firstName = (document.getElementById("firstNameAdd").value).replace(/<\/?[^>]+(>|$)/g, "");
-	var lastName = (document.getElementById("lastNameAdd").value).replace(/<\/?[^>]+(>|$)/g, "");
+	var firstName = (document.getElementById("firstNameRemove").value).replace(/<\/?[^>]+(>|$)/g, "");
+	var lastName = (document.getElementById("lastNameRemove").value).replace(/<\/?[^>]+(>|$)/g, "");
 	
 	var fullName = firstName +" "+lastName;
 	console.log(fullName);
@@ -86,8 +86,8 @@ function removeJudge(){
 
 function forgotCode(){
 	//the regex in .replace will sanitize input
-	var firstName = (document.getElementById("firstNameAdd").value).replace(/<\/?[^>]+(>|$)/g, "");
-	var lastName = (document.getElementById("lastNameAdd").value).replace(/<\/?[^>]+(>|$)/g, "");
+	var firstName = (document.getElementById("firstNameForgot").value).replace(/<\/?[^>]+(>|$)/g, "");
+	var lastName = (document.getElementById("lastNameForgot").value).replace(/<\/?[^>]+(>|$)/g, "");
 	
 	var fullName = firstName +" "+lastName;
 	console.log(fullName);
